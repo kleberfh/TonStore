@@ -22,6 +22,7 @@ export type TProduct = {
   title: string;
   image: string;
   price: number;
+  features: string[];
   description: string;
 }
 
@@ -30,6 +31,7 @@ export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch
 
 export interface IHeaderProps {
+  route: any;
   navigation: any;
 }
 

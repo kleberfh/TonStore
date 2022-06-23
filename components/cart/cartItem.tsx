@@ -1,19 +1,21 @@
+import {useEffect, useRef} from "react";
 import {useDispatch} from "react-redux";
 import { Feather } from '@expo/vector-icons';
 import {convertIntToMoney} from "../utilities";
 import {AppDispatch, TProduct} from "../../types";
 import {removeProduct} from "../../redux/cartSlice";
-import {View, Text, StyleSheet, Image, Pressable} from "react-native";
+import {View, Text, StyleSheet, Image, Pressable, Animated} from "react-native";
+import {FONT_SIZE_MD, FONT_SIZE_XL, ROUNDED, SECONDARY_COLOR, SPACER_LG, SPACER_SM, TEXT_COLOR} from "../theme";
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 10,
-    borderRadius: 20,
-    marginBottom: 10,
+    padding: SPACER_SM,
+    borderRadius: ROUNDED / 2,
+    marginBottom: SPACER_SM,
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#fff",
+    backgroundColor: SECONDARY_COLOR,
   },
   image: {
     width: 60,
@@ -23,33 +25,48 @@ const styles = StyleSheet.create({
     flexDirection: "column",
   },
   title: {
-    fontSize: 26,
-    color: "#333",
-    marginLeft: 10,
+    fontSize: FONT_SIZE_XL,
+    color: TEXT_COLOR,
+    marginLeft: SPACER_SM,
     fontWeight: "500",
-    marginBottom: 20,
+    marginBottom: SPACER_LG,
   },
   price: {
-    fontSize: 20,
+    fontSize: FONT_SIZE_MD,
     color: "#8f8f8f",
-    marginLeft: 10,
+    marginLeft: SPACER_SM,
     fontWeight: "500",
   },
   button: {
-    marginRight: 10,
+    marginRight: SPACER_SM,
     marginLeft: "auto",
   }
 });
 
 export default function CartItem({ item }: { item: TProduct }) {
   const dispatch: AppDispatch = useDispatch();
+  const opacity = useRef(new Animated.Value(0)).current;
 
   const removeItem = () => {
-    dispatch(removeProduct(item));
+    Animated.timing(opacity, {
+      toValue: 0,
+      duration: 200,
+      useNativeDriver: true,
+    }).start(() => {
+      dispatch(removeProduct(item));
+    });
   }
 
+  useEffect(() => {
+    Animated.timing(opacity, {
+      toValue: 1,
+      duration: 200,
+      useNativeDriver: true,
+    }).start();
+  }, []);
+
   return (
-    <View style={styles.container}>
+    <Animated.View style={[styles.container, { opacity }]}>
       <Image
         style={styles.image}
         resizeMode={"contain"}
@@ -70,6 +87,6 @@ export default function CartItem({ item }: { item: TProduct }) {
         {/* @ts-ignore */}
         <Feather name="trash-2" size={32} color="#ff2450" />
       </Pressable>
-    </View>
+    </Animated.View>
   );
 }

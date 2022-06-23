@@ -3,59 +3,67 @@ import {useDispatch, useSelector} from "react-redux";
 import {convertIntToMoney, getProductsWidth} from "../utilities";
 import {View, Image, Text, Pressable, StyleSheet} from "react-native";
 import {addProduct, getCartProducts, removeProduct} from "../../redux/cartSlice";
+import {
+  DANGER_COLOR,
+  FONT_SIZE_LG, FONT_SIZE_MD, FONT_SIZE_SM, PRIMARY_COLOR,
+  ROUNDED,
+  SECONDARY_COLOR,
+  SHADOW_COLOR, SPACER_MD,
+  SPACER_SM, SPACER_XS,
+  TEXT_COLOR,
+  TEXT_OPACITY,
+  WIDTH_FULL
+} from "../theme";
 
 const styles = StyleSheet.create({
   container: {
-    padding: 10,
+    padding: SPACER_SM,
     width: getProductsWidth(),
   },
   content: {
-    borderRadius: 20,
-    shadowColor: "#000",
+    borderRadius: ROUNDED / 2,
+    shadowColor: SHADOW_COLOR,
     shadowOpacity: 0.10,
     alignItems: "center",
     shadowOffset: {
       width: 0,
       height: 2,
     },
-    backgroundColor: "#fff",
+    backgroundColor: SECONDARY_COLOR,
   },
   image: {
     width: 180,
     height: 100,
-    marginTop: 10,
+    marginTop: SPACER_SM,
   },
   title: {
-    fontSize: 24,
-    width: '100%',
-    color: "#000",
-    marginTop: 10,
+    fontSize: FONT_SIZE_LG,
+    width: WIDTH_FULL,
+    color: TEXT_COLOR,
+    marginTop: SPACER_SM,
     fontWeight: "600",
     textAlign: "center",
   },
   price: {
-    opacity: 0.6,
-    marginTop: 5,
-    fontSize: 18,
-    width: '100%',
-    color: "#333",
+    opacity: TEXT_OPACITY,
+    marginTop: SPACER_XS,
+    fontSize: FONT_SIZE_SM,
+    width: WIDTH_FULL,
+    color: TEXT_COLOR,
     fontWeight: "600",
     textAlign: "center",
   },
   button: {
     width: '80%',
-    marginTop: 10,
-    paddingTop: 10,
-    paddingLeft: 20,
-    marginBottom: 10,
-    borderRadius: 80,
-    paddingRight: 20,
-    paddingBottom: 10,
+    marginVertical: SPACER_SM,
+    paddingVertical: SPACER_SM,
+    paddingHorizontal: SPACER_MD,
+    borderRadius: ROUNDED * 2,
     alignItems: "center",
   },
   button_text: {
-    fontSize: 20,
-    color: '#fff',
+    fontSize: FONT_SIZE_MD,
+    color: SECONDARY_COLOR,
     fontWeight: '700',
   }
 });
@@ -101,7 +109,7 @@ export default function Product(props: { product: TProduct }) {
         </Text>
         <Pressable
           onPress={handleAction}
-          style={[styles.button, { backgroundColor: isProductInCart() ? '#ff2450' : '#36e61a' }]}
+          style={[styles.button, { backgroundColor: isProductInCart() ? DANGER_COLOR : PRIMARY_COLOR }]}
         >
           <Text style={styles.button_text}>
             {isProductInCart() ? 'Remover' : 'Adicionar'}

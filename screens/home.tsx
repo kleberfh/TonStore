@@ -5,11 +5,12 @@ import {fetchProducts, getProductsStatus} from "../redux/productsSlice";
 import ProductsList from "../components/products/productsList";
 import {AppDispatch} from "../types";
 import {useEffect} from "react";
+import {BACKGROUND_COLOR, FONT_SIZE_3XL, PRIMARY_COLOR} from "../components/theme";
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#ecf0f1",
+    backgroundColor: BACKGROUND_COLOR,
   },
   content: {
     flex: 1,
@@ -36,7 +37,7 @@ export default function Home() {
       <View style={styles.content}>
         {status === 'loading' ? (
           <View style={styles.loading}>
-            <Loading size={120} color={'#36e61a'} thickness={6} />
+            <Loading size={FONT_SIZE_3XL} color={PRIMARY_COLOR} thickness={6} />
           </View>
         ) : (
           <ProductsList />
