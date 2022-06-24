@@ -11,8 +11,8 @@ const styles = StyleSheet.create({
   loading: {
     height: 0,
     borderWidth: 4,
-    width: WIDTH_FULL,
     borderRadius: 90,
+    width: WIDTH_FULL,
   },
 });
 

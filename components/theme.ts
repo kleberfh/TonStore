@@ -8,7 +8,6 @@ export const BACKGROUND_COLOR = '#ecf0f1';
 // SIZES
 export const ROUNDED = 40;
 export const PRODUCT_ROWS = 2;
-export const WIDTH_HALF = '50%';
 export const WIDTH_FULL = '100%';
 export const WIDTH_1_3 = '33,33%';
 

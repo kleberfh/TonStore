@@ -1,4 +1,4 @@
-import {View, Text, StyleSheet} from "react-native";
+import {View, StyleSheet} from "react-native";
 import Loading from "../components/loading";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchProducts, getProductsStatus} from "../redux/productsSlice";

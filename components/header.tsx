@@ -43,7 +43,6 @@ export default function Header(props: IHeaderProps) {
       <View style={styles.back_container}>
         {route.name === 'Cart' && (
           <Pressable onPress={goBack}>
-            {/* @ts-ignore */}
             <AntDesign name="arrowleft" size={FONT_SIZE_2XL} color={SECONDARY_COLOR} />
           </Pressable>
         )}

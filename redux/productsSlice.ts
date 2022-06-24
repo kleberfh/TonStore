@@ -1,8 +1,8 @@
 import {getProducts} from "../services/products";
-import {RootState, TProductState} from "../types";
+import {RootState, IProductState} from "../types";
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-const initialState: TProductState = {
+const initialState: IProductState = {
   count: 0,
   products: [],
   status: 'idle',

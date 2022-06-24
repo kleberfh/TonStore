@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Cart from "../screens/cart";
 import {StatusBar} from "react-native";
 import Header from "../components/header";
+import ProductDetail from "../screens/productDetails";
 
 const Stack = createNativeStackNavigator<StackParamList>();
 
@@ -23,6 +24,14 @@ export default function Router() {
       >
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Cart" component={Cart} />
+        <Stack.Screen
+          name="Details"
+          component={ProductDetail}
+          options={{
+            headerShown: false,
+            presentation: 'modal'
+        }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

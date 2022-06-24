@@ -1,10 +1,7 @@
-import {AppDispatch, TProduct} from "../../types";
-import {useDispatch, useSelector} from "react-redux";
-import {convertIntToMoney, getProductsWidth} from "../utilities";
+import {TProduct} from "../../types";
+import {getProductsWidth} from "../utilities";
 import {View, Image, Text, Pressable, StyleSheet} from "react-native";
-import {addProduct, getCartProducts, removeProduct} from "../../redux/cartSlice";
 import {
-  DANGER_COLOR,
   FONT_SIZE_LG, FONT_SIZE_MD, FONT_SIZE_SM, PRIMARY_COLOR,
   ROUNDED,
   SECONDARY_COLOR,
@@ -14,6 +11,7 @@ import {
   TEXT_OPACITY,
   WIDTH_FULL
 } from "../theme";
+import {useNavigation} from "@react-navigation/native";
 
 const styles = StyleSheet.create({
   container: {
@@ -55,11 +53,12 @@ const styles = StyleSheet.create({
   },
   button: {
     width: '80%',
+    alignItems: "center",
+    borderRadius: ROUNDED * 2,
     marginVertical: SPACER_SM,
     paddingVertical: SPACER_SM,
     paddingHorizontal: SPACER_MD,
-    borderRadius: ROUNDED * 2,
-    alignItems: "center",
+    backgroundColor: PRIMARY_COLOR,
   },
   button_text: {
     fontSize: FONT_SIZE_MD,
@@ -70,31 +69,14 @@ const styles = StyleSheet.create({
 
 export default function Product(props: { product: TProduct }) {
   const { product } = props;
-  const cart = useSelector(getCartProducts);
-  const dispatch: AppDispatch = useDispatch();
+  const navigation = useNavigation();
 
-  const isProductInCart = () => {
-    return cart.find(item => item.id === product.id);
-  }
-
-  const addProductToCart = () => {
-    dispatch(addProduct(product));
-  }
-
-  const removeProductFromCart = () => {
-    dispatch(removeProduct(product));
-  }
-
-  const handleAction = () => {
-    if (isProductInCart()) {
-      removeProductFromCart()
-    } else {
-      addProductToCart()
-    }
+  const handleProductDetails = () => {
+    navigation.navigate('Details', { product });
   }
 
   return (
-    <View style={styles.container}>
+    <Pressable style={styles.container} onPress={handleProductDetails}>
       <View style={styles.content}>
         <Image
           style={styles.image}
@@ -104,18 +86,14 @@ export default function Product(props: { product: TProduct }) {
         <Text style={styles.title}>
           {product.title}
         </Text>
-        <Text style={styles.price}>
-          {convertIntToMoney(product.price)}
-        </Text>
-        <Pressable
-          onPress={handleAction}
-          style={[styles.button, { backgroundColor: isProductInCart() ? DANGER_COLOR : PRIMARY_COLOR }]}
+        <View
+          style={styles.button}
         >
           <Text style={styles.button_text}>
-            {isProductInCart() ? 'Remover' : 'Adicionar'}
+            Detalhes
           </Text>
-        </Pressable>
+        </View>
       </View>
-    </View>
+    </Pressable>
   );
 }

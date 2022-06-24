@@ -17,7 +17,6 @@ export default function CartButton() {
       onPress={handleOpenCart}
     >
       <Badge />
-      {/* @ts-ignore */}
       <Feather name="shopping-cart" size={FONT_SIZE_2XL} color={SECONDARY_COLOR} />
     </Pressable>
   )

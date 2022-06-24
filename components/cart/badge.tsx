@@ -26,7 +26,6 @@ const styles = StyleSheet.create({
 
 export default function Badge() {
   const count = useSelector(getCartCount);
-
   const scale = useRef(new Animated.Value(1)).current;
 
   useEffect(() => {
