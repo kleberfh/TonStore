@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Cart Badge should not render when empty 1`] = `null`;
+
+exports[`Cart Badge shound render when counter has value 1`] = `
+<View
+  collapsable={false}
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#ff2450",
+      "borderRadius": 40,
+      "height": 20,
+      "justifyContent": "center",
+      "position": "absolute",
+      "right": -10,
+      "top": -5,
+      "transform": Array [
+        Object {
+          "scale": 1,
+        },
+      ],
+      "width": 20,
+      "zIndex": 1,
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "color": "#fff",
+        "fontSize": 14,
+        "fontWeight": "bold",
+      }
+    }
+  >
+    1
+  </Text>
+</View>
+`;
