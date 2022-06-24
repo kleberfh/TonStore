@@ -1,11 +1,15 @@
-import {View, StyleSheet} from "react-native";
-import Loading from "../components/loading";
-import {useDispatch, useSelector} from "react-redux";
-import {fetchProducts, getProductsStatus} from "../redux/productsSlice";
-import ProductsList from "../components/products/productsList";
-import {AppDispatch} from "../types";
-import {useEffect} from "react";
-import {BACKGROUND_COLOR, FONT_SIZE_3XL, PRIMARY_COLOR} from "../components/theme";
+import React, { useEffect } from 'react';
+import { View, StyleSheet } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import Loading from '../components/loading';
+import { fetchProducts, getProductsStatus } from '../redux/productsSlice';
+import ProductsList from '../components/products/productsList';
+import { AppDispatch } from '../types';
+import {
+  BACKGROUND_COLOR,
+  FONT_SIZE_3XL,
+  PRIMARY_COLOR,
+} from '../components/theme';
 
 const styles = StyleSheet.create({
   container: {
@@ -14,12 +18,13 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
+    alignItems: 'center',
   },
   loading: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  }
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });
 
 export default function Home() {
@@ -27,9 +32,10 @@ export default function Home() {
   const status = useSelector(getProductsStatus);
 
   useEffect(() => {
-    if (status === "idle") {
+    if (status === 'idle') {
       dispatch(fetchProducts());
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

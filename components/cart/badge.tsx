@@ -1,8 +1,16 @@
-import {useEffect, useRef} from "react";
-import {useSelector} from "react-redux";
-import {getCartCount} from "../../redux/cartSlice";
-import {Text, StyleSheet, Animated} from "react-native";
-import {DANGER_COLOR, FONT_SIZE_XS, ROUNDED, SECONDARY_COLOR, SPACER_LG, SPACER_SM, SPACER_XS} from "../theme";
+import React, { useEffect, useRef } from 'react';
+import { useSelector } from 'react-redux';
+import { Text, StyleSheet, Animated } from 'react-native';
+import { getCartCount } from '../../redux/cartSlice';
+import {
+  DANGER_COLOR,
+  FONT_SIZE_XS,
+  ROUNDED,
+  SECONDARY_COLOR,
+  SPACER_LG,
+  SPACER_SM,
+  SPACER_XS,
+} from '../theme';
 
 const styles = StyleSheet.create({
   container: {
@@ -10,18 +18,18 @@ const styles = StyleSheet.create({
     width: SPACER_LG,
     height: SPACER_LG,
     right: -SPACER_SM,
-    zIndex : 1,
+    zIndex: 1,
     borderRadius: ROUNDED,
-    position: "absolute",
-    alignItems: "center",
-    justifyContent: "center",
+    position: 'absolute',
+    alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: DANGER_COLOR,
   },
   count: {
     fontSize: FONT_SIZE_XS,
     color: SECONDARY_COLOR,
-    fontWeight: "bold",
-  }
+    fontWeight: 'bold',
+  },
 });
 
 export default function Badge() {
@@ -39,18 +47,17 @@ export default function Badge() {
           toValue: 1,
           duration: 200,
           useNativeDriver: true,
-        }).start()
+        }).start();
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [count]);
 
   if (!count) return null;
 
   return (
-    <Animated.View style={[styles.container, { transform: [{ scale }]}]}>
-      <Text style={styles.count}>
-        {count}
-      </Text>
+    <Animated.View style={[styles.container, { transform: [{ scale }] }]}>
+      <Text style={styles.count}>{count}</Text>
     </Animated.View>
   );
 }

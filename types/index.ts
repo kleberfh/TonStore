@@ -1,10 +1,13 @@
 import store from "../redux/store";
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
 export type StackParamList = {
   Home: undefined;
   Cart: undefined;
   Details: { product: IProduct };
 }
+
+export type datailScreenProp = NativeStackScreenProps<StackParamList, 'Details'>;
 
 export type AppDispatch = typeof store.dispatch
 

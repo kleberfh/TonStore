@@ -1,6 +1,6 @@
-import {getProducts} from "../services/products";
-import {RootState, IProductState} from "../types";
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { getProducts } from '../services/products';
+import { RootState, IProductState } from '../types';
 
 const initialState: IProductState = {
   count: 0,
@@ -8,7 +8,7 @@ const initialState: IProductState = {
   status: 'idle',
 };
 
-export const fetchProducts = createAsyncThunk('posts/fetchPosts', async (_, { getState }) => {
+export const fetchProducts = createAsyncThunk('posts/fetchPosts', async () => {
   try {
     return await getProducts();
   } catch (e) {

@@ -1,4 +1,8 @@
 // COLORS
+import { Dimensions } from 'react-native';
+
+const screenWidth = Dimensions.get('window').width;
+
 export const PRIMARY_COLOR = '#00ad0c';
 export const SECONDARY_COLOR = '#fff';
 export const DANGER_COLOR = '#ff2450';
@@ -7,9 +11,10 @@ export const BACKGROUND_COLOR = '#ecf0f1';
 
 // SIZES
 export const ROUNDED = 40;
-export const PRODUCT_ROWS = 2;
 export const WIDTH_FULL = '100%';
 export const WIDTH_1_3 = '33,33%';
+export const MAX_WIDTH = screenWidth > 800 ? 600 : WIDTH_FULL;
+export const PRODUCT_ROWS = Math.round(screenWidth / 200);
 
 // SPACES
 export const SPACER_XS = 5;

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { StyleSheet, Animated, Easing } from 'react-native';
 import { IIconProps } from '../types';
-import {ROUNDED, WIDTH_FULL} from "./theme";
+import { ROUNDED, WIDTH_FULL } from './theme';
 
 const styles = StyleSheet.create({
   container: {

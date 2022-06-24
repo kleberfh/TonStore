@@ -1,8 +1,9 @@
-import Product from "./product";
-import {useSelector} from "react-redux";
-import {StyleSheet, FlatList} from "react-native";
-import {getAllProducts} from "../../redux/productsSlice";
-import {PRODUCT_ROWS, SPACER_LG, SPACER_SM} from "../theme";
+import React from 'react';
+import { StyleSheet, FlatList } from 'react-native';
+import { useSelector } from 'react-redux';
+import Product from './product';
+import { getAllProducts } from '../../redux/productsSlice';
+import { PRODUCT_ROWS, SPACER_LG, SPACER_SM } from '../theme';
 
 const styles = StyleSheet.create({
   container: {
@@ -14,7 +15,7 @@ const styles = StyleSheet.create({
   },
   products_container: {
     paddingHorizontal: SPACER_SM,
-  }
+  },
 });
 
 export default function ProductsList() {
@@ -25,10 +26,10 @@ export default function ProductsList() {
       data={products}
       style={styles.container}
       numColumns={PRODUCT_ROWS}
-      keyExtractor={(item) => item.id.toString()}
+      keyExtractor={item => item.id.toString()}
       contentContainerStyle={styles.list_container}
       columnWrapperStyle={styles.products_container}
-      renderItem={({item}) => <Product product={item} />}
+      renderItem={({ item }) => <Product product={item} />}
     />
   );
 }
