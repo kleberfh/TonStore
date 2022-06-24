@@ -1,17 +1,18 @@
 import React, { useEffect } from 'react';
 import { StyleSheet, Animated, Easing } from 'react-native';
 import { IIconProps } from '../types';
+import {ROUNDED, WIDTH_FULL} from "./theme";
 
 const styles = StyleSheet.create({
   container: {
-    borderRadius: 80,
     borderColor: '#dddddd',
+    borderRadius: ROUNDED * 2,
   },
   loading: {
     height: 0,
-    width: '100%',
     borderWidth: 4,
     borderRadius: 90,
+    width: WIDTH_FULL,
   },
 });
 

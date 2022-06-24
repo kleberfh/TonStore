@@ -2,21 +2,22 @@ import {IHeaderProps} from "../types";
 import CartButton from "./cart/cartButton";
 import { AntDesign } from '@expo/vector-icons';
 import {View, StyleSheet, Image, Pressable} from "react-native";
+import {FONT_SIZE_2XL, PRIMARY_COLOR, SECONDARY_COLOR, SPACER_2XL, SPACER_LG, WIDTH_1_3} from "./theme";
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 40,
+    paddingTop: SPACER_2XL,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#36e61a",
+    backgroundColor: PRIMARY_COLOR,
   },
   back_container: {
-    width: '33,33%',
-    paddingLeft: 20,
+    width: WIDTH_1_3,
+    paddingLeft: SPACER_LG,
   },
   logo_container: {
-    width: '33,33%',
+    width: WIDTH_1_3,
   },
   logo: {
     width: 80,
@@ -24,14 +25,14 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   cart: {
-    width: '33,33%',
-    paddingRight: 20,
+    width: WIDTH_1_3,
+    paddingRight: SPACER_LG,
     alignItems: "flex-end",
   }
 });
 
 export default function Header(props: IHeaderProps) {
-  const { navigation } = props;
+  const { navigation, route } = props;
 
   const goBack = () => {
     navigation.goBack();
@@ -40,10 +41,9 @@ export default function Header(props: IHeaderProps) {
   return (
     <View style={styles.container}>
       <View style={styles.back_container}>
-        {navigation.canGoBack() && (
+        {route.name === 'Cart' && (
           <Pressable onPress={goBack}>
-            {/* @ts-ignore */}
-            <AntDesign name="arrowleft" size={32} color="#fff" />
+            <AntDesign name="arrowleft" size={FONT_SIZE_2XL} color={SECONDARY_COLOR} />
           </Pressable>
         )}
       </View>

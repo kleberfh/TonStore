@@ -1,20 +1,19 @@
 import Product from "./product";
 import {useSelector} from "react-redux";
 import {StyleSheet, FlatList} from "react-native";
-import {getNumberOfProductsRows} from "../utilities";
 import {getAllProducts} from "../../redux/productsSlice";
+import {PRODUCT_ROWS, SPACER_LG, SPACER_SM} from "../theme";
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
   list_container: {
-    paddingTop: 10,
-    paddingBottom: 20,
+    paddingTop: SPACER_SM,
+    paddingBottom: SPACER_LG,
   },
   products_container: {
-    paddingLeft: 10,
-    paddingRight: 10,
+    paddingHorizontal: SPACER_SM,
   }
 });
 
@@ -25,7 +24,7 @@ export default function ProductsList() {
     <FlatList
       data={products}
       style={styles.container}
-      numColumns={getNumberOfProductsRows()}
+      numColumns={PRODUCT_ROWS}
       keyExtractor={(item) => item.id.toString()}
       contentContainerStyle={styles.list_container}
       columnWrapperStyle={styles.products_container}

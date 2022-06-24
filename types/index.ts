@@ -3,33 +3,39 @@ import store from "../redux/store";
 export type StackParamList = {
   Home: undefined;
   Cart: undefined;
+  Details: { product: IProduct };
 }
 
-export type TProductState = {
-  count: number;
-  products: TProduct[];
-  status: 'loading' | 'error' | 'success' | 'idle';
-}
+export type AppDispatch = typeof store.dispatch
 
-export type TCartState = {
-  count: number;
-  products: TProduct[];
-  value: number;
-}
+export type RootState = ReturnType<typeof store.getState>
 
-export type TProduct = {
+export interface IProduct {
   id: number;
   title: string;
   image: string;
   price: number;
-  description: string;
+  features: string[];
 }
 
-export type RootState = ReturnType<typeof store.getState>
+export interface IProductState {
+  count: number;
+  products: IProduct[];
+  status: 'loading' | 'error' | 'success' | 'idle';
+}
 
-export type AppDispatch = typeof store.dispatch
+export interface IProductCart extends IProduct {
+  count: number;
+}
+
+export interface ICartState {
+  count: number;
+  value: number;
+  products: IProductCart[];
+}
 
 export interface IHeaderProps {
+  route: any;
   navigation: any;
 }
 

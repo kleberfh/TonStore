@@ -2,12 +2,7 @@ import Badge from "./badge";
 import { Feather } from '@expo/vector-icons';
 import {Pressable, StyleSheet} from "react-native";
 import {useNavigation} from "@react-navigation/native";
-
-const styles = StyleSheet.create({
-  container: {
-
-  }
-});
+import {FONT_SIZE_2XL, SECONDARY_COLOR} from "../theme";
 
 export default function CartButton() {
   const navigation = useNavigation();
@@ -20,11 +15,9 @@ export default function CartButton() {
   return (
     <Pressable
       onPress={handleOpenCart}
-      style={styles.container}
     >
       <Badge />
-      {/* @ts-ignore */}
-      <Feather name="shopping-cart" size={32} color="#fff" />
+      <Feather name="shopping-cart" size={FONT_SIZE_2XL} color={SECONDARY_COLOR} />
     </Pressable>
   )
 }
