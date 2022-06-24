@@ -1,15 +1,24 @@
-import {IHeaderProps} from "../types";
-import CartButton from "./cart/cartButton";
+import React from 'react';
 import { AntDesign } from '@expo/vector-icons';
-import {View, StyleSheet, Image, Pressable} from "react-native";
-import {FONT_SIZE_2XL, PRIMARY_COLOR, SECONDARY_COLOR, SPACER_2XL, SPACER_LG, WIDTH_1_3} from "./theme";
+import { View, StyleSheet, Image, Pressable } from 'react-native';
+import { IHeaderProps } from '../types';
+import Logo from '../assets/ton_white.png';
+import CartButton from './cart/cartButton';
+import {
+  FONT_SIZE_2XL,
+  PRIMARY_COLOR,
+  SECONDARY_COLOR,
+  SPACER_2XL,
+  SPACER_LG,
+  WIDTH_1_3,
+} from './theme';
 
 const styles = StyleSheet.create({
   container: {
     paddingTop: SPACER_2XL,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: PRIMARY_COLOR,
   },
   back_container: {
@@ -22,13 +31,13 @@ const styles = StyleSheet.create({
   logo: {
     width: 80,
     height: 80,
-    alignSelf: "center",
+    alignSelf: 'center',
   },
   cart: {
     width: WIDTH_1_3,
     paddingRight: SPACER_LG,
-    alignItems: "flex-end",
-  }
+    alignItems: 'flex-end',
+  },
 });
 
 export default function Header(props: IHeaderProps) {
@@ -36,19 +45,23 @@ export default function Header(props: IHeaderProps) {
 
   const goBack = () => {
     navigation.goBack();
-  }
+  };
 
   return (
     <View style={styles.container}>
       <View style={styles.back_container}>
         {route.name === 'Cart' && (
           <Pressable onPress={goBack}>
-            <AntDesign name="arrowleft" size={FONT_SIZE_2XL} color={SECONDARY_COLOR} />
+            <AntDesign
+              name="arrowleft"
+              size={FONT_SIZE_2XL}
+              color={SECONDARY_COLOR}
+            />
           </Pressable>
         )}
       </View>
       <View style={styles.logo_container}>
-        <Image source={require("../assets/ton_white.png")} style={styles.logo} />
+        <Image source={Logo} style={styles.logo} />
       </View>
       <View style={styles.cart}>
         <CartButton />

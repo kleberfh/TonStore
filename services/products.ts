@@ -1,20 +1,20 @@
-import axios from "axios";
+import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: "https://62b37756a36f3a973d228bb7.mockapi.io/",
+  baseURL: 'https://62b37756a36f3a973d228bb7.mockapi.io/',
 });
 
 instance.interceptors.response.use(
-  (response) => {
+  response => {
     return response.data;
   },
-  (error) => {
+  error => {
     return Promise.reject(error);
-  }
+  },
 );
 
 export const getProducts = () => {
-  return instance.get("products");
-}
+  return instance.get('products');
+};
 
 export default instance;
