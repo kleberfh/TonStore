@@ -1,8 +1,7 @@
 <div 
     style="display: flex; justify-content: center; align-items: center; width: 100%; background-color: #2b2b2b;"
 >
-	<img width="350"
-	    src="https://github.com/kleberfh/TonStore/blob/main/assets/demos/iphone.png?raw=true" />
+<img width="100%" src="https://github.com/kleberfh/TonStore/blob/main/assets/demos/iphone.png?raw=true" />
 </div>
 
 # Ton Store
